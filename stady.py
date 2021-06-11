@@ -1,20 +1,13 @@
-class Godkb:
+import os
+import sys
+import shutil
+from datetime import date
+def Copy_mkdir():
+    try:
+        a = str(date.today())
+        path = f"S:/Медперсонал/Архив отправленных эпикризов/2021/Июнь/{a}"
+        shutil.copytree("S:/Медперсонал/tmp_epikr/", path)
+    except FileExistsError:
+        print(f"Папка с именем {a} уже существует\nУдалите сначала эту папку!!!")
 
-	def __init__(self, otdel=str, job=str) -> str:
-		self.otdel = otdel
-		self.job = job
-		print("Работает функция init главная")
-	def graf(self):
-		print("Отдел", self.otdel, "занимается", self.job)
-
-class Odkp(Godkb):
-
-	def __init__(self, oad=100, job=20) -> str:
-		self.xp = None
-		print("Работает функция инит подкласса")
-		super().__init__(job)
-		
-AD = Odkp()
-
-print(AD.job)
-
+Copy_mkdir()
