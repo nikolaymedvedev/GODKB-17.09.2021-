@@ -8,7 +8,7 @@ from email.mime.multipart import MIMEMultipart
 
 def send_email(addr_to, msg_subj, msg_text, files):
     addr_from = "nikolmedvedev123@gmail.com"
-    password  = "135312345WnonW"
+    password  = "135312345Wnonp"
 
     msg = MIMEMultipart()
     msg['nikolmedvedev123@gmail.com'] = addr_from

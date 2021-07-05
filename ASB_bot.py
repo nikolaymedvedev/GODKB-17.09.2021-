@@ -1,5 +1,6 @@
 # Это телеграмм бот, присылает пароль по номеру из карты кодов АСБ"Беларусьбанк"
 import telebot
+print("Бот активирован!")
 bot = telebot.TeleBot("1329901094:AAGWu4A1ICJWYg__gONJXYUcc-2H52uzTBU")
 @bot.message_handler(content_types=['text'])
 def otvet_bot(message):
