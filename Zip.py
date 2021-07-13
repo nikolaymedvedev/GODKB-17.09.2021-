@@ -12,7 +12,7 @@ now = time.strftime('%H.%M.%S')  # Время сейчас
 if len(commit) == 0:
 	target = target_dir + "/" + now + ".zip"
 else:
-	target = target_dir + "/" + now + "(" +commit.replace(" ", "_") + ")" + ".zip"
+	target = target_dir + "/" + now + "(" + commit.replace(" ", "_") + ")" + ".zip"
 
 
 if not os.path.exists(target_dir):

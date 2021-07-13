@@ -7,6 +7,8 @@ import dell
 
 input("Для запуска программы нажмите Enter: ")
 
+"""_______________Содание временной дирректории и копирование туда файлов_____________"""
+
 def Copy_in_tmp(n, m):
     try:
         shutil.copytree(n, m)
@@ -62,8 +64,12 @@ def Copy_mkdir(n, m):
         path = f"{n}{b}"
         shutil.copytree(m, path)
 
+"""_______________Удаление временной директории_____________"""
+
 def Dell_tmp_epikr(n):
     shutil.rmtree(n)
+
+"""_______________Запуск основной функции_____________"""
 
 if __name__ == "__main__":
 	def main():
@@ -127,6 +133,5 @@ if __name__ == "__main__":
 		print("Удаление завершено")
 		time.sleep(2)
 		dell.dell()
-
 
 main()

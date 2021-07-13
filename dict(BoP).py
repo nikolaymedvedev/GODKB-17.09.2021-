@@ -8,18 +8,23 @@ class Personals:
 			self.age = age
 	def add_dict(self):
 		Personals.d[f"{self.name}"] = self.age
+	
 	def dell_dict():
 		del(Personals.d[key])
+	
 	def load_at_file():
 		with open("test.txt", "rb") as f:
 			Personals.d = load(f)
+	
 	def dump_in_file():
 		with open("test.txt", "wb") as f:
 			dump(Personals.d, f)
+	
 	def read():
 		f = open("test.txt", "rt")
 		a = f.read()
 		print(a)
+	
 	def loock_one():
 		vvod00 = input("Ведите имя контакта для просмотра данных:\n")
 		for i in Personals.d.keys():
@@ -31,6 +36,7 @@ class Personals:
 			time.sleep(1)
 			print("Данные '{0}' не найдены\nВыход в главное меню..".format(vvod00))
 			time.sleep(1)
+
 try:
 	while not End:
 		vvod = input("Введите действия: 1)Посмотреть; 2)Изменить (<Ctrl+C>_выйти из программы): \n")
