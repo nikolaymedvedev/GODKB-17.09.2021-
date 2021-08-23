@@ -6,6 +6,7 @@ class Personals:
 	def __init__(self, name, age):
 			self.name = name
 			self.age = age
+			
 	def add_dict(self):
 		Personals.d[f"{self.name}"] = self.age
 	

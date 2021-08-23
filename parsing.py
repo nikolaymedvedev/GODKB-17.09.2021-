@@ -23,9 +23,8 @@ while True:
 	items = html.select(".posts-grid__row > .posts-grid__main-section-column")
 	if len(items):
 		for i in items:
-			
-			page += 1
 			print(i.text)
+		page += 1
 	else:
 		break
 
@@ -150,4 +149,26 @@ for i in item:
 	GAZ = f"{title[5].text}: {title[7].text}".replace(" ", "-", 1)
 	DIZ = f"{title[8].text}: {title[9].text}"
 	print(f"{AI92.rstrip()} руб;\n{AI95.rstrip()} руб;\n{AI98.rstrip()} руб;\n{GAZ.rstrip()} руб;\n{DIZ.rstrip()} руб.")
+
+"""
+"""
+_______________С av.by passsat b3______________
+import requests
+from bs4 import BeautifulSoup as bs
+page = 1
+while True:
+	url = "https://cars.av.by/filter?brands[0][brand]=1216&brands[0][model]=5912&page="
+	r = requests.get(url + str(page))
+	html = bs(r.content, "html.parser")
+	items = html.select(".listing-item__wrap")
+	if len(items):
+		for i in items:
+			title = i.select(".listing-item__about > .listing-item__title")
+			title1 = i.select(".listing-item__params")
+			title2 = i.select(".listing-item__prices")
+			title3 = i.select(".listing-item__photo")
+			print(f" {title3}\n\n {title[0].text} ({title1[0].text}) Цена:, {title2[0].text}")
+		page += 1
+	else:
+		break
 """

@@ -29,7 +29,7 @@ def otvet_bot(message):
 		r = get("https://select.by/kurs/gomel") 
 		html = bs(r.content, "html.parser")
 		item = html.select(".no-gutters > .mx-2 > .mb-3")
-		info = item[0].text.split("\n")		
+		info = item[1].text.split("\n")		
 		for elem in info:
 			for bank in banks:
 				if elem == bank:
@@ -70,7 +70,7 @@ def otvet_bot(message):
 		html = bs(r.content, "html.parser")
 		title = html.select(".weather-now-info")
 		result = (title[0].text)
-		bot.send_message(message.chat.id, f"{result[0:6]}({result[6:11]}): {result[18:]}C")
+		bot.send_message(message.chat.id, f"{result[0:6]}({result[6:11]}): {result[19:]}C")
 	key = (list(d.keys()))
 	val = (list(d.values()))
 	if message.text in key:

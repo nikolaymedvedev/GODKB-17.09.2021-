@@ -1,6 +1,6 @@
 # Реализация собственного метода replace на основе собственного класса str
 
-class Str:
+class Str(object):
 
 	def __init__(self, text):
 		self.text = text

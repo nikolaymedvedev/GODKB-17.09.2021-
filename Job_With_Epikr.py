@@ -25,7 +25,7 @@ def Del_0(n):
     basedir = n
     names = os.listdir(basedir)
     paths = [os.path.join(basedir, name) for name in names]
-    sizes = [(path, os.stat(path).st_size) for path in paths]    
+    sizes = [(path, os.stat(path)) for path in paths]    
     for element in sizes:
         listik = []
         a = listik.append(element[1])
@@ -125,7 +125,7 @@ if __name__ == "__main__":
 		print("Успешно")
 		time.sleep(3)
 		print ("Начато копирование файлов в архивную папку:", str(time.strftime('%d.%m.%Y')), "...")
-		Copy_mkdir("S:/Медперсонал/Архив отправленных эпикризов/2021/Июль/", "S:/Медперсонал/tmp_epikr/")
+		Copy_mkdir("S:/Медперсонал/Архив отправленных эпикризов/2021/Август/", "S:/Медперсонал/tmp_epikr/")
 		print("Копирование файлов завершено")
 		time.sleep(3)
 		print("Удаление временной папки temp_epikr")
