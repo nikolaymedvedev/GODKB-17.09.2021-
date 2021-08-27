@@ -14,6 +14,10 @@ class A:
 	def __add__(self, other):
 		return A(self.name + other.name, self.age + other.age)
 
+	@classmethod
+	def nameclass(cls):
+		return cls.__name__
+
 	def setattr(self, name, age):
 		self.__name = name
 		self.__age = age
@@ -49,8 +53,6 @@ print(c.name)
 
 Vova = B("Это:X", "Это:y", "Вова", 37)
 print(Vova.name)
-
-
 
 
 

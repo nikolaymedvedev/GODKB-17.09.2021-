@@ -153,7 +153,5 @@ def dell():
     y = input("Для выхода из программы нажмите <N>: ")
     quit()
 
-
-
 if __name__ =="__main__":
     dell()

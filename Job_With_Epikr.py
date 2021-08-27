@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 import time
 import dell
+import glob
 
 input("Для запуска программы нажмите Enter: ")
 
@@ -22,17 +23,16 @@ def Copy_in_tmp(n, m):
 """ ___________Удаление файлов < 0kb__________"""
 
 def Del_0(n):
-    basedir = n
-    names = os.listdir(basedir)
-    paths = [os.path.join(basedir, name) for name in names]
-    sizes = [(path, os.stat(path)) for path in paths]    
-    for element in sizes:
-        listik = []
-        a = listik.append(element[1])
-        for i in listik:
-            if i == 0:
-                os.remove(element[i])
-                print("Удален файл:", element[i])
+	for file in glob.glob(n):
+		if os.path.exists(file):
+			attribute = [event for event in os.stat(file)]
+			if attribute[6] < 163:
+				os.remove(file)
+				print(f"Файл {file} удален!")
+			else:
+				continue
+		else:
+			continue
 
 """ ___________Перетипизация файлов__________"""
 
@@ -75,28 +75,28 @@ if __name__ == "__main__":
 	def main():
 		print(f"Идет копирование файлов в папку 'tmp_epikr' ...")
 		Copy_in_tmp("S:/Медперсонал/Эпикризы для отправки/", "S:/Медперсонал/tmp_epikr/")
-		print("Удаляются файлы нулевого размера")
-		Del_0("S:/Медперсонал/tmp_epikr/Брагин ЦРБ/")
-		Del_0("S:/Медперсонал/tmp_epikr/Буда-Кошелево ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Ветка ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/ГЦГДКП")
-		Del_0("S:/Медперсонал/tmp_epikr/Добруш ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Ельск ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Житковичи ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Жлобин ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Калинковичи ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Корма ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Лельчицы ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Лоев ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Мозырь ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Наровля ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Октябрь ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Петриков ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Речица ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Рогачев ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Светлогорск ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Хойники ЦРБ")
-		Del_0("S:/Медперсонал/tmp_epikr/Чечерск ЦРБ")
+		print("Удаляются файлы нулевого и единичного размера")
+		Del_0("S:/Медперсонал/tmp_epikr/Брагин ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Буда-Кошелево ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Ветка ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/ГЦГДКП/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Добруш ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Ельск ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Житковичи ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Жлобин ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Калинковичи ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Корма ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Лельчицы ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Лоев ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Мозырь ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Наровля ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Октябрь ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Петриков ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Речица ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Рогачев ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Светлогорск ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Хойники ЦРБ/*")
+		Del_0("S:/Медперсонал/tmp_epikr/Чечерск ЦРБ/*")
 		print("Успешно")
 		time.sleep(3)
 		print("Идет перетипизация файлов")
