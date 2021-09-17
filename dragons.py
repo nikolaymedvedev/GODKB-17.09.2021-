@@ -3,13 +3,14 @@ class Dragon:
 			self.name = name
 			self.healf = 100
 
-	def is_alive(self):
-			return self.healf > 0
-
 	def get_damage(self, damage):
 			self.healf -= damage
 			if self.healf < 0:
 				self.healf = 0
+
+	def is_alive(self):
+		return self.healf > 0
+
 
 	def talk(self):
 			print(self.name, ":Ударь меня, мое здоровье: ", self.healf)

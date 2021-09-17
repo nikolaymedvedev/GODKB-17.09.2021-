@@ -73,6 +73,27 @@ print(items[0].text,"\n",
 
 """
 """
+_______________Погода на неделю2_______________
+import requests
+from bs4 import BeautifulSoup as bs
+
+r = get('https://world-weather.ru/pogoda/belarus/gomel/7days/')
+html = bs(r.content, "html.parser")
+items = html.select(".weather-today > .day")
+items1 = html.select(".dates")
+for i in items:
+	title = html.select(".weather-temperature")
+	title1 = html.select(".weather-probability")
+print(f"(Сегодня){items1[0].text}:\nночью: {title[0].text}({title1[0].text}), днем: {title[2].text}({title1[2].text})")
+print(f"(Завтра){items1[1].text}: \nночью:{title[4].text}({title1[4].text}),днем: {title[6].text}({title1[6].text})")
+print(f"(Послезавтра){items1[2].text}:\nночью: {title[8].text}({title1[8].text}),днем: {title[10].text}({title1[10].text})")
+print(f"{items1[3].text}:\nночью: {title[12].text}({title1[12].text}), днем: {title[14].text}({title1[14].text})")
+print(f"{items1[4].text}:\nночью: {title[16].text}({title1[16].text}), днем: {title[18].text}({title1[18].text})")
+print(f"{items1[5].text}:\nночью: {title[20].text}({title1[20].text}), днем: {title[22].text}({title1[22].text})")
+print(f"{items1[6].text}:\nночью: {title[24].text}({title1[24].text}), днем: {title[26].text}({title1[26].text})")
+
+"""
+"""
 _______________Температура сейчас______________
 from requests import get
 from bs4 import BeautifulSoup as bs
@@ -101,7 +122,6 @@ print(f"Курс долара США:\nПокупка: {pok} бр.\nПродаж
 
 """
 """
-
 _______________Курс долара от Нацбанка_________________
 from requests import get
 from bs4 import BeautifulSoup as bs

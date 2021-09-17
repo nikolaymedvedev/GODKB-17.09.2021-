@@ -55,22 +55,26 @@ def otvet_bot(message):
 			DIZ = f"{title[8].text}: {title[9].text}"
 			bot.send_message(message.chat.id, f"Стоимость топлива:\n{AI92.rstrip()} б.р;\n{AI95.rstrip()} б.р;\n{AI98.rstrip()} б.р;\n{GAZ.rstrip()} б.р;\n{DIZ.rstrip()} б.р")
 	def pogoda_nedel():
-		r = get('https://yandex.by/pogoda/gomel')
+		r = get('https://world-weather.ru/pogoda/belarus/gomel/7days/')
 		html = bs(r.content, "html.parser")
-		items = html.select(".forecast-briefly__day")
-		status = items[1].text.replace(" ","")
-		bot.send_message(message.chat.id, f"{status}")
-		status = items[2].text.replace(" ","")
-		bot.send_message(message.chat.id, f"Завтра: {status}")
-		for day in range(3, 9):
-			status = items[day].text.replace(" ","")
-			bot.send_message(message.chat.id, f"{status}")
+		items = html.select(".weather-today > .day")
+		items1 = html.select(".dates")
+		for i in items:
+			title = html.select(".weather-temperature")
+			title1 = html.select(".weather-probability")
+		bot.send_message(message.chat.id, f"(Сегодня){items1[0].text}:\nночью: {title[0].text}({title1[0].text}), днем: {title[2].text}({title1[2].text})")
+		bot.send_message(message.chat.id, f"(Завтра){items1[1].text}:\nночью: {title[4].text}({title1[4].text}), днем: {title[6].text}({title1[6].text})")
+		bot.send_message(message.chat.id, f"(Послезавтра){items1[2].text}:\nночью: {title[8].text}({title1[8].text}), днем: {title[10].text}({title1[10].text})")
+		bot.send_message(message.chat.id, f"{items1[3].text}:\nночью: {title[12].text}({title1[12].text}), днем: {title[14].text}({title1[14].text})")
+		bot.send_message(message.chat.id, f"{items1[4].text}:\nночью: {title[16].text}({title1[16].text}), днем: {title[18].text}({title1[18].text})")
+		bot.send_message(message.chat.id, f"{items1[5].text}:\nночью: {title[20].text}({title1[20].text}), днем: {title[22].text}({title1[22].text})")
+		bot.send_message(message.chat.id, f"{items1[6].text}:\nночью: {title[24].text}({title1[24].text}), днем: {title[26].text}({title1[26].text})")
 	def temp_now():
 		r = get("https://world-weather.ru/pogoda/belarus/gomel/")
 		html = bs(r.content, "html.parser")
 		title = html.select(".weather-now-info")
 		result = (title[0].text)
-		bot.send_message(message.chat.id, f"{result[0:6]}({result[6:11]}): {result[19:]}C")
+		bot.send_message(message.chat.id, f"{result[0:6]}({result[6:11]}): {result[18:]}C")
 	key = (list(d.keys()))
 	val = (list(d.values()))
 	if message.text in key:
