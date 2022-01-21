@@ -10,9 +10,42 @@ class A:
 
 	def __len__(self):
 		return (len(self.name) + len(str(self.age)))
-
+	
 	def __add__(self, other):
 		return A(self.name + other.name, self.age + other.age)
+	
+	def __call__(self, age: int, name: str ="Nikolay"):
+      		return f"Собака {self.name} с возрастом {age}"
+	
+	def __lt__(self, other):
+      		if self.age < other:
+         		return True
+      		return False
+
+   	def __gt__(self, other):
+      		if self.age > other:
+         		return True
+      		return False
+
+   	def __eq__(self, other):
+      		if self.age == other:
+         		return True
+      		return False
+
+   	def __getattribute__(self, name):
+      		if name == "name":
+         		return "Не трогай это имя!"
+      		return object.__getattribute__(self, name)
+
+   	def __getattr__(self, name):
+      		return False
+
+   	def __delattr__(self, name):
+        	print(f"Удаляем аттрибут {name}")
+      		object.__delattr__(self, name)
+
+   	def __del__(self):
+      		print(f"Удаляем обьект класса {__class__.__name__}")
 
 	@classmethod
 	def nameclass(cls):
