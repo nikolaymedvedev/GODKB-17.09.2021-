@@ -1,0 +1,51 @@
+"""______________________Решение скобочной последовательности_______________________"""
+
+a = "())))(((()"
+
+assert a.startswith("("), "Последовательность не начинается"
+assert a.endswith(")"), "Последовательность не заканчивается"
+for i in a:
+	if i == "(":
+		assert a.count("(") == a.count(")"), "Скобок недостаточно"
+
+def is_correct_brackets(line):
+    while "()" in line or "[]" in line or "{}" in line or "/**/" in line:
+        line = line.replace("()", "")
+        line = line.replace("[]", "")
+        line = line.replace("{}", "")
+        line = line.replace("/**/", "")
+    return not line
+
+def asd(line):
+#	line = input("Введите скобочную последовательность, состоящую из символов (), [], {}, /**/: ")
+	info_line = "Неправильная"
+	if is_correct_brackets(line):
+	    info_line = "Правильная"
+	print("Введенная скобочная последовательность - ", info_line)
+
+asd(a)
+
+"""_______________________________Минимальная разноть списка__________________________________"""
+
+def asd1(my_list):
+	min_elem = abs(my_list[1]) - abs(my_list[0])
+	for i in range(len(my_list) - 1):
+		for j in range(i+1, len(my_list)):
+			a = abs(my_list[j]) - abs(my_list[i])
+			if a < min_elem:
+				min_elem = a
+	return min_elem
+  
+  """_____________________________Является ли последовательность строговозрастащей____________________"""
+  
+  def asd(lemb):
+	listik = []
+	listik2 = []
+	for i in range(len(lemb) - 1):
+		listik.append(lemb[i] < lemb[i+1])
+		listik2.append(lemb[i]+1 == lemb[i+1])
+	if False in listik:
+		return "Последовательность не является возрастающей"
+	if False in listik2:
+		return "Последовательность не четко возврастающая"	
+	return "Все ок"
